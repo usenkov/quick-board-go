@@ -1,4 +1,3 @@
-
 import { supabase } from "@/integrations/supabase/client";
 import { Board, Column, Task } from "../types/kanban";
 
