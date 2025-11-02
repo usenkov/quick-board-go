@@ -1,6 +1,11 @@
 import { supabase } from "@/integrations/supabase/client";
 import { Board, Column, Task } from "../types/kanban";
 
+// Generate a unique ID for columns and cards
+const generateId = () => {
+  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+};
+
 // Fetch all columns with their tasks
 export const fetchBoard = async (): Promise<Board> => {
   // Get all columns ordered by their order value
@@ -45,9 +50,10 @@ export const fetchBoard = async (): Promise<Board> => {
 
 // Create a new column
 export const createColumn = async (title: string, order: number): Promise<Column> => {
+  const id = generateId();
   const { data, error } = await supabase
     .from('columns')
-    .insert({ title, order })
+    .insert({ id, title, order })
     .select()
     .single();
 
@@ -87,9 +93,10 @@ export const deleteColumn = async (id: string): Promise<void> => {
 
 // Create a new task
 export const createTask = async (columnId: string, title: string, order: number): Promise<Task> => {
+  const id = generateId();
   const { data, error } = await supabase
     .from('cards')
-    .insert({ column_id: columnId, title, order })
+    .insert({ id, column_id: columnId, title, order })
     .select()
     .single();
 
