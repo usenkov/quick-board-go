@@ -1,73 +1,61 @@
-# Welcome to your Lovable project
+# Project "Quick Board Go"
 
-## Project info
+A simple Kanban board dashboard built with React, Vite, and Supabase.
 
-**URL**: https://lovable.dev/projects/d403f595-be38-4312-af30-d62a9b5ac1f1
+## 🚀 Tech Stack
 
-## How can I edit this code?
+* **Framework:** React (with Vite + TypeScript)
+* **Runtime / Package Manager:** Bun
+* **Backend:** Supabase (PostgreSQL Database)
+* **Styling:** Tailwind CSS
+* **Drag-and-Drop:** @dnd-kit/core
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🏁 Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d403f595-be38-4312-af30-d62a9b5ac1f1) and start prompting.
+Before running the project, you must set up the connection to Supabase and install dependencies.
 
-Changes made via Lovable will be committed automatically to this repo.
+### 1. Configure `.env.local`
 
-**Use your preferred IDE**
+This project requires a connection to your Supabase instance.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1.  Create a file named `.env.local` in the project's root folder.
+2.  Copy the following text into it and paste your keys from Supabase:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+VITE_SUPABASE_URL="YOUR_PROJECT_URL_FROM_SUPABASE" 
+VITE_SUPABASE_ANON_KEY="YOUR_ANON_PUBLIC_KEY_FROM_SUPABASE"
 
-Follow these steps:
+### 2. Set Up the Supabase Database
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+This project requires the `columns` and `cards` tables to exist in your database.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1.  Go to your Supabase project on `app.supabase.com`.
+2.  Navigate to the **SQL Editor** section.
+3.  Open the `supabase/schema.sql` file in your project, copy **all** of its content.
+4.  Paste the copied SQL code into the Supabase SQL Editor and click **"RUN"**.
 
-# Step 3: Install the necessary dependencies.
-npm i
+This will create all the necessary tables and populate them with starting data.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 3. Install and Run (using Bun)
 
-**Edit a file directly in GitHub**
+1.  **Install dependencies:**
+    (Ensure you have Bun installed)
+    ```bash
+    bun install
+    ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+2.  **Run the development server:**
+    ```bash
+    bun run dev
+    ```
 
-**Use GitHub Codespaces**
+The application will be available at `http://localhost:8080/`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📜 Available Scripts
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d403f595-be38-4312-af30-d62a9b5ac1f1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+* `bun run dev`: Runs the app in development mode.
+* `bun run build`: Builds the app for production (into the `dist` folder).
+* `bun run preview`: Runs the locally built production build.
